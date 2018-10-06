@@ -216,6 +216,8 @@ public class SimpleAdapter extends RecyclerView.Adapter<SimpleViewHolder>
   public <T extends SimpleCell & Updatable> void addOrUpdateCells(List<T> cells) {
     SimpleDiffCallbackDelegate callbackDelegate = new SimpleDiffCallbackDelegate(this, cells);
     DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(callbackDelegate);
+    this.cells.clear();
+    this.cells.addAll(cells);
     diffResult.dispatchUpdatesTo(this);
   }
 
